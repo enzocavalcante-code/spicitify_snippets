@@ -1,0 +1,56 @@
+/* =========================================================
+   Glass effect (dark)
+   Turns Spotify's panels into translucent glass plates,
+   in the style of iOS "Liquid Glass".
+   ========================================================= */
+
+:root {
+  /* Blur strength of what is behind */
+  --glass-blur: 28px;
+
+  /* Glass tint: the last number sets how dark it gets
+     (0.30 = more transparent, 0.60 = darker).
+     For light glass, use rgba(255,255,255,0.10) */
+  --glass-tint: rgba(0, 0, 0, 0.45);
+
+  /* Thin border of the panels */
+  --glass-border: rgba(255, 255, 255, 0.10);
+
+  /* Corner radius */
+  --glass-radius: 18px;
+}
+
+/* The four glass panels: library, main area,
+   right panel and player.
+   (The repeated class raises the rule's priority.) */
+.Root__nav-bar.Root__nav-bar.Root__nav-bar,
+.Root__main-view.Root__main-view.Root__main-view,
+.Root__right-sidebar.Root__right-sidebar.Root__right-sidebar,
+.Root__now-playing-bar.Root__now-playing-bar.Root__now-playing-bar {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), var(--glass-tint) 35%, rgba(0, 0, 0, 0.55)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--glass-radius) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12), /* top highlight */
+    0 8px 32px rgba(0, 0, 0, 0.5) !important; /* outer shadow */
+  overflow: hidden !important;
+}
+
+/* Makes Spotify's inner backgrounds transparent,
+   so the glass also shows inside pages */
+.Root__nav-bar,
+.Root__nav-bar .encore-dark-theme,
+.Root__main-view,
+.Root__main-view .encore-dark-theme,
+.Root__right-sidebar,
+.Root__right-sidebar .encore-dark-theme {
+  --background-base: transparent !important;
+  --background-highlight: rgba(255, 255, 255, 0.06) !important;
+  --background-press: rgba(255, 255, 255, 0.10) !important;
+  --background-elevated-base: rgba(0, 0, 0, 0.30) !important;
+  --background-elevated-highlight: rgba(255, 255, 255, 0.08) !important;
+  --background-tinted-base: rgba(255, 255, 255, 0.06) !important;
+  --background-tinted-highlight: rgba(255, 255, 255, 0.10) !important;
+}

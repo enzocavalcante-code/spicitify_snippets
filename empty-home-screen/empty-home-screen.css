@@ -1,0 +1,64 @@
+/* =========================================================
+   Empty home screen
+   Leaves only the background on the home screen and makes
+   the library (left) and the "now playing" panel (right) transparent.
+   ========================================================= */
+
+/* 1. Transparent library on the left
+   (buttons and images keep their own background) */
+.Root__nav-bar,
+.Root__nav-bar *:not(img):not(button):not(button *) {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* 2. Home screen: removes the dark background... */
+.Root__main-view:has([data-testid="home-page"], .main-home-content),
+.Root__main-view:has([data-testid="home-page"], .main-home-content) * {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* ...and hides all content (filters, shortcuts and albums) */
+.Root__main-view:has([data-testid="home-page"], .main-home-content) .main-view-container * {
+  visibility: hidden !important;
+}
+
+/* 3. Transparent right panel ("now playing")
+   (covers, videos and the artist photo stay visible) */
+.Root__right-sidebar,
+#Desktop_PanelContainer_Id,
+.Root__right-sidebar aside,
+.Root__right-sidebar *:not(img):not(video):not(button):not(button *):not([style*="background-image"]) {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* Removes extra layers and gradients from the panel */
+.Root__right-sidebar *::before,
+.Root__right-sidebar *::after {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Removes the fade on the edges of the video carousels */
+.Root__right-sidebar * {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+/* Keeps the "E" (explicit) badge readable */
+.Root__right-sidebar [aria-label*="xpl"],
+.Root__right-sidebar [title*="xpl"] {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  color: #000000 !important;
+  border-radius: 2px !important;
+}

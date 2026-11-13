@@ -1,0 +1,33 @@
+/* =========================================================
+   Custom background
+   Sets an image OR a solid color as the background of all of
+   Spotify, without the faded/opaque overlay of themes.
+   ========================================================= */
+
+:root {
+  /* Background image: paste a direct link (.jpg, .png, .webp).
+     To use only the color, replace the line with:  --bg-image: none; */
+  --bg-image: url("PASTE_LINK_HERE");
+
+  /* Background color (shown when there is no image) */
+  --bg-color: #000000;
+}
+
+/* Removes extra layers that themes put over the background */
+body::before,
+body::after,
+.Root::before,
+.Root::after,
+.Root__top-container::before,
+.Root__top-container::after {
+  display: none !important;
+}
+
+/* Applies the image (or color) full screen, without filters */
+body,
+.Root,
+.Root__top-container {
+  background: var(--bg-image) center / cover no-repeat fixed var(--bg-color) !important;
+  filter: none !important;
+  opacity: 1 !important;
+}

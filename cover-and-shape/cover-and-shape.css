@@ -1,0 +1,37 @@
+/* =========================================================
+   Cover and shape
+   Replaces the cover of every playlist/album in the library
+   with a single image and makes them all round.
+   ========================================================= */
+
+:root {
+  /* Image used as the cover of every playlist */
+  --cover: url("https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Mangekyou_Sharingan_Kakashi.svg/960px-Mangekyou_Sharingan_Kakashi.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail");
+}
+
+/* Replaces covers that are images and makes them round */
+.Root__nav-bar img {
+  content: var(--cover) !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+/* Rounds the cover containers */
+.Root__nav-bar [class*="mageContainer"],
+.Root__nav-bar [class*="mageWrapper"],
+.Root__nav-bar [class*="entityImage"] {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+/* Covers that aren't images (e.g. "Liked Songs") */
+.Root__nav-bar [class*="mageContainer"]:not(:has(img)),
+.Root__nav-bar [class*="entityImage"]:not(:has(img)) {
+  background: var(--cover) center / cover no-repeat !important;
+}
+
+/* Hides the original icon of those covers */
+.Root__nav-bar [class*="mageContainer"]:not(:has(img)) svg,
+.Root__nav-bar [class*="entityImage"]:not(:has(img)) svg {
+  display: none !important;
+}

@@ -1,0 +1,23 @@
+/* =========================================================
+   Rinnegan player
+   Replaces the play/pause button with a Rinnegan GIF.
+   The button keeps working as usual.
+   ========================================================= */
+
+/* Sets the GIF as the play/pause button background */
+.player-controls [data-testid="control-button-playpause"] {
+  background: url('https://media.tenor.com/nMD71FWBUz8AAAAi/rinnegan.gif') center / contain no-repeat !important;
+  background-color: transparent !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+}
+
+/* Hides the white circle and the original icon
+   (they are still there, invisible, receiving the click) */
+.player-controls [data-testid="control-button-playpause"] > *,
+.player-controls [data-testid="control-button-playpause"] svg {
+  opacity: 0 !important;
+}
